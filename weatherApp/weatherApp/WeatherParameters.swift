@@ -36,7 +36,7 @@ struct ResponseBody: Decodable {
     }
     
 }
-//можно и как енам. Просто нашел такой способ - решил показать 
+
 extension ResponseBody.MainResponse {
     var feelsLike: Double { return feels_like }
     var tempMin: Double { return temp_min }
