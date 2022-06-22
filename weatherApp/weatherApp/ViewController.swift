@@ -15,12 +15,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityNameLable: UILabel!
     @IBOutlet weak var textWeatherDiscription: UILabel!
     @IBOutlet weak var sunIndexLable: UILabel!
+    @IBOutlet weak var viewForBackgroundBlurePic: UIView!
     
     var weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setbackgroundPic()
         weatherManager.urlRequest(city: "Dublin")
         weatherManager.completion = { [weak  self] currentWeather in
             guard let self = self else { return }
@@ -54,4 +55,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func setbackgroundPic() {
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                backgroundImage.image = UIImage(named: "backgroundPic")
+            backgroundImage.contentMode = .bottom
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = viewForBackgroundBlurePic.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            viewForBackgroundBlurePic.addSubview(blurEffectView)
+                self.viewForBackgroundBlurePic.insertSubview(backgroundImage, at: 0)
+    }
 }//конец класса

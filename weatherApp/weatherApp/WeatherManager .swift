@@ -14,28 +14,23 @@ class WeatherManager {
         return key
     }
     
+    enum Units {
+        case celsius
+        var main: String {
+            switch self {
+                case .celsius: return "metric"
+            }
+        }
+    }
+    
     enum Languages {
         case russian
         case english
-        case arabic
-        case german
-        case french
-        case japanese
-        case chinese
-        case italian
-        case ukrainian
         
         var shortName: String {
             switch self {
             case .russian: return "ru"
             case .english: return "en"
-            case .arabic: return "ar"
-            case .german: return "de"
-            case .french: return "fr"
-            case .japanese: return "ja"
-            case .chinese: return "zh_tw"
-            case .italian: return "it"
-            case .ukrainian: return "ua"
             }
         }
     }
@@ -59,7 +54,7 @@ class WeatherManager {
                     let geocoding = try decoder.decode([Geolocation].self, from: data)
                     guard let long = geocoding.first?.lon,
                           let lat = geocoding.first?.lat else { return }
-                    self.currentWeather(long: long, lat: lat, withLang: .english)
+                    self.currentWeather(long: long, lat: lat, withLang: .english, units: .celsius)
              
                 } catch let error {
                     print(error)
@@ -69,8 +64,8 @@ class WeatherManager {
         dataTask.resume()
     }
     
-    func currentWeather(long: Double, lat: Double, withLang lang: Languages) {
-        let urlAddress = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=daily&appid=\(weatherApiKey)&lang=\(lang.shortName)&units=metric"
+    func currentWeather(long: Double, lat: Double, withLang lang: Languages, units: Units) {
+        let urlAddress = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=daily&appid=\(weatherApiKey)&lang=\(lang.shortName)&units=\(units.main)"
         guard let url = URL(string: urlAddress) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
