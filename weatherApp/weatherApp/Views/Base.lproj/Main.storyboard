@@ -18,7 +18,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa1-qW-dqX">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zh9-hU-owl">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Zh9-hU-owl" secondAttribute="trailing" id="8cJ-gc-DFH"/>
+                                    <constraint firstItem="Zh9-hU-owl" firstAttribute="leading" secondItem="sa1-qW-dqX" secondAttribute="leading" id="CM7-mC-aSG"/>
+                                    <constraint firstItem="Zh9-hU-owl" firstAttribute="top" secondItem="sa1-qW-dqX" secondAttribute="top" id="N7g-Cr-6S7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zh9-hU-owl" secondAttribute="bottom" id="V3d-l3-5GL"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4j-td-fBQ">
                                 <rect key="frame" x="55" y="251" width="41.5" height="21"/>
@@ -71,6 +82,7 @@
                     <connections>
                         <outlet property="cityNameLable" destination="W9x-MH-me7" id="1ym-rm-gOh"/>
                         <outlet property="currentWeatherImg" destination="yIq-IB-JvA" id="wQF-Qo-mz7"/>
+                        <outlet property="imageViewForBackgroundPic" destination="Zh9-hU-owl" id="hir-Jd-XW5"/>
                         <outlet property="summaryWeatherInfo" destination="h4j-td-fBQ" id="7Mo-8p-9ei"/>
                         <outlet property="sunIndexLable" destination="z35-jc-ZAd" id="ehr-ZB-vYb"/>
                         <outlet property="textWeatherDiscription" destination="y1U-Jc-zLn" id="mNM-oR-Bnz"/>

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textWeatherDiscription: UILabel!
     @IBOutlet weak var sunIndexLable: UILabel!
     @IBOutlet weak var viewForBackgroundBlurePic: UIView!
+    @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
     
     var weatherManager = WeatherManager()
     
@@ -56,14 +57,16 @@ class ViewController: UIViewController {
     }
 //    MARK: - set background image with blure effect
     func setbackgroundPic() {
-            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-                backgroundImage.image = UIImage(named: "backgroundPic")
-            backgroundImage.contentMode = .bottom
+        imageViewForBackgroundPic.image = UIImage(named: "backgroundPic")
+        
+//            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//                backgroundImage.image = UIImage(named: "backgroundPic")
+//            backgroundImage.contentMode = .bottom
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.frame = viewForBackgroundBlurePic.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             viewForBackgroundBlurePic.addSubview(blurEffectView)
-                self.viewForBackgroundBlurePic.insertSubview(backgroundImage, at: 0)
+//                self.viewForBackgroundBlurePic.insertSubview(backgroundImage, at: 0)
     }
 }//конец класса
