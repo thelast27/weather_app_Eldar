@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             self.update(weather: currentWeather)
         }
     } //конец вью дид лод
-    
+    //    MARK: - update weather data with necessary parametrs 
     func update(weather: CurrentAndForecastWeather) {
         guard let icon = weather.current?.weather?.first?.icon else { return }
         let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             self.sunIndexLable.text = "Sun Index is \(Double(sunIndex))"
         }
     }
-    
+//    MARK: - set background image with blure effect
     func setbackgroundPic() {
             let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
                 backgroundImage.image = UIImage(named: "backgroundPic")

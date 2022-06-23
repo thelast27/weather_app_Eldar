@@ -71,6 +71,7 @@ class WeatherManager {
         urlRequest.httpMethod = "GET"
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { [weak self] data, response, error in
+            guard let self = self else { return }
             if let error = error {
                 print(error)
             }
@@ -79,7 +80,7 @@ class WeatherManager {
                 let decoder = JSONDecoder()
                 do {
                     let currentWeather = try decoder.decode(CurrentAndForecastWeather.self, from: data)
-                    self?.completion?(currentWeather)
+                    self.completion?(currentWeather)
                 } catch let error {
                     print(error)
                 }
