@@ -36,10 +36,18 @@ class WeatherManager {
     }
     
     var completion: ((CurrentAndForecastWeather) -> Void)?
-    
+// MARK: - get geocoding data
     func urlRequest(city: String) {
-        let urlAddress = "https://api.openweathermap.org/geo/1.0/direct?q=\(city)&appid=\(weatherApiKey)"
-        guard let url = URL(string: urlAddress) else { return }
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.openweathermap.org"
+        components.path = "/geo/1.0/direct"
+        components.queryItems = [
+            URLQueryItem(name: "q", value: city),
+            URLQueryItem(name: "appid", value: weatherApiKey)
+        ]
+        guard let urlAddress = components.url else { return }
+        guard let url = URL(string: "\(urlAddress)") else { return }
             var urlRequest = URLRequest(url: url)
               urlRequest.httpMethod = "GET"
         let session = URLSession(configuration: .default)
@@ -63,10 +71,22 @@ class WeatherManager {
         }
         dataTask.resume()
     }
-    
+    // MARK: - get current weather data
     func currentWeather(long: Double, lat: Double, withLang lang: Languages, units: Units) {
-        let urlAddress = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=daily&appid=\(weatherApiKey)&lang=\(lang.shortName)&units=\(units.main)"
-        guard let url = URL(string: urlAddress) else { return }
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.openweathermap.org"
+        components.path = "/data/2.5/onecall"
+        components.queryItems = [
+            URLQueryItem(name: "lat", value: "\(lat)"),
+            URLQueryItem(name: "lon", value: "\(long)"),
+            URLQueryItem(name: "exclude", value: "daily"),
+            URLQueryItem(name: "appid", value: weatherApiKey),
+            URLQueryItem(name: "lang", value: lang.shortName),
+            URLQueryItem(name: "units", value: units.main)
+        ]
+        guard let urlAddress = components.url else { return }
+        guard let url = URL(string: "\(urlAddress)") else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         let session = URLSession(configuration: .default)
