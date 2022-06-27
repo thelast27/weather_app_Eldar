@@ -23,5 +23,7 @@
 	</dict>
 	<key>weatherApiKey</key>
 	<string>b61dbfacfdb0c829c7f9b5ee06534d0b</string>
+	<key>googleMapsAPI</key>
+	<string>AIzaSyDd9j0Gq-JAjcf_Hd1PFMmq6zmygrnUUe0</string>
 </dict>
 </plist>

@@ -63,7 +63,7 @@ class WeatherManager {
                     guard let long = geocoding.first?.lon,
                           let lat = geocoding.first?.lat else { return }
                     self.currentWeather(long: long, lat: lat, withLang: .english, units: .celsius)
-             
+                    print(data)
                 } catch let error {
                     print(error)
                 }
@@ -101,6 +101,7 @@ class WeatherManager {
                 do {
                     let currentWeather = try decoder.decode(CurrentAndForecastWeather.self, from: data)
                     self.completion?(currentWeather)
+                    print(data)
                 } catch let error {
                     print(error)
                 }
