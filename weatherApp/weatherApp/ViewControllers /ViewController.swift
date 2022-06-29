@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-
+    
     @IBOutlet weak var summaryWeatherInfo: UILabel!
     @IBOutlet weak var currentWeatherImg: UIImageView!
     @IBOutlet weak var cityNameLable: UILabel!
@@ -17,16 +17,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var sunIndexLable: UILabel!
     @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
     
-    var weatherManager = WeatherManager()
+    var weatherManager: RestAPIProviderProtocol = WeatherManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageViewForBackgroundPic.image = UIImage(named: "backgroundPic")
-        weatherManager.urlRequest(city: "Dublin")
-        weatherManager.completion = { [weak  self] currentWeather in
+        
+        weatherManager.getCoordinatesByName(forCity: "Dublin") { [weak self] CurrentAndForecastWeather in
             guard let self = self else { return }
-            self.update(weather: currentWeather)
+            self.update(weather: CurrentAndForecastWeather)
         }
     } //конец вью дид лод
     //    MARK: - update weather data with necessary parametrs
