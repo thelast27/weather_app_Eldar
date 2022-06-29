@@ -7,4 +7,10 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:weatherApp/Manager/../../Info.plist">
+   </FileRef>
+   <FileRef
+      location = "group:weatherApp/../Assets.xcassets">
+   </FileRef>
 </Workspace>

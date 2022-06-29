@@ -101,7 +101,7 @@ class WeatherManager {
                 do {
                     let currentWeather = try decoder.decode(CurrentAndForecastWeather.self, from: data)
                     self.completion?(currentWeather)
-                    print(data)
+//                    print(data)
                 } catch let error {
                     print(error)
                 }

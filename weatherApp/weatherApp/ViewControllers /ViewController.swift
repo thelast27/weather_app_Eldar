@@ -9,11 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var topConstraint = NSLayoutConstraint()
-    var bottomConstraint = NSLayoutConstraint()
-    var trailingConstraint = NSLayoutConstraint()
-    var leadingConstraint = NSLayoutConstraint()
-    
+
     @IBOutlet weak var summaryWeatherInfo: UILabel!
     @IBOutlet weak var currentWeatherImg: UIImageView!
     @IBOutlet weak var cityNameLable: UILabel!

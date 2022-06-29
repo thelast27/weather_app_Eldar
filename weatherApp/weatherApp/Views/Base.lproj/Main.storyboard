@@ -124,11 +124,43 @@
                                 <rect key="frame" x="20" y="74" width="354" height="504"/>
                                 <color key="backgroundColor" red="0.56134372290000001" green="0.56134372290000001" blue="0.56134372290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eyR-I3-OUs">
+                                <rect key="frame" x="16" y="690" width="382" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFV-D0-2vV">
+                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Riq-ID-8SG">
+                                        <rect key="frame" x="0.0" y="20.5" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymk-7a-cgK">
+                                        <rect key="frame" x="0.0" y="41" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHg-K7-99e">
+                                        <rect key="frame" x="0.0" y="61.5" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nDj-pv-Ock"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="nDj-pv-Ock" firstAttribute="bottom" secondItem="eyR-I3-OUs" secondAttribute="bottom" constant="41" id="8fd-gc-RpO"/>
+                            <constraint firstItem="eyR-I3-OUs" firstAttribute="leading" secondItem="WY8-CS-XDS" secondAttribute="leading" constant="16" id="N8K-zD-ka4"/>
                             <constraint firstItem="naL-hj-trd" firstAttribute="top" secondItem="nDj-pv-Ock" secondAttribute="top" constant="30" id="eoP-6n-kc4"/>
+                            <constraint firstAttribute="trailing" secondItem="eyR-I3-OUs" secondAttribute="trailing" constant="16" id="fsw-K5-A9f"/>
                             <constraint firstItem="nDj-pv-Ock" firstAttribute="trailing" secondItem="naL-hj-trd" secondAttribute="trailing" constant="40" id="lmj-JF-uKb"/>
                             <constraint firstItem="nDj-pv-Ock" firstAttribute="bottom" secondItem="naL-hj-trd" secondAttribute="bottom" constant="235" id="m4k-zT-KRS"/>
                             <constraint firstItem="naL-hj-trd" firstAttribute="leading" secondItem="nDj-pv-Ock" secondAttribute="leading" constant="20" id="pcQ-bz-H2r"/>
@@ -137,6 +169,10 @@
                     <tabBarItem key="tabBarItem" title="Item" selectedImage="map.fill" catalog="system" id="Lk0-p8-8un"/>
                     <connections>
                         <outlet property="borderViewForMap" destination="naL-hj-trd" id="OlW-Ce-AZa"/>
+                        <outlet property="nameOfTappedPiont" destination="LFV-D0-2vV" id="mVx-h5-Zlw"/>
+                        <outlet property="summaryWeatherInfo" destination="ymk-7a-cgK" id="hF6-ie-yOr"/>
+                        <outlet property="sunIndexLable" destination="Riq-ID-8SG" id="JiU-XA-e9K"/>
+                        <outlet property="textWeatherDiscription" destination="vHg-K7-99e" id="jBI-oQ-D5L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9S-iG-NfO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
