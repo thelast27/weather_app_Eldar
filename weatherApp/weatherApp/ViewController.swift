@@ -8,32 +8,55 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var topConstraint = NSLayoutConstraint()
+    var bottomConstraint = NSLayoutConstraint()
+    var trailingConstraint = NSLayoutConstraint()
+    var leadingConstraint = NSLayoutConstraint()
+    
+    @IBOutlet weak var summaryWeatherInfo: UILabel!
+    @IBOutlet weak var currentWeatherImg: UIImageView!
+    @IBOutlet weak var cityNameLable: UILabel!
+    @IBOutlet weak var textWeatherDiscription: UILabel!
+    @IBOutlet weak var sunIndexLable: UILabel!
+    @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
+    
+    var weatherManager = WeatherManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-     
-      if let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=55.5359&lon=27.3400&appid=b61dbfacfdb0c829c7f9b5ee06534d0b&units=metric") {
-          var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "GET"
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-          let dataTaks = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-
-              if let data = data {
-                  guard let weatherParametrs = try? JSONDecoder().decode(ResponseBody.self, from: data) else { return }
-                  print("In \(weatherParametrs.name) today \(weatherParametrs.main.temp) by Celsius")
-              }
-          }
-          dataTaks.resume()
+        imageViewForBackgroundPic.image = UIImage(named: "backgroundPic")
+        weatherManager.urlRequest(city: "Dublin")
+        weatherManager.completion = { [weak  self] currentWeather in
+            guard let self = self else { return }
+            self.update(weather: currentWeather)
+        }
+    } //конец вью дид лод
+    //    MARK: - update weather data with necessary parametrs
+    func update(weather: CurrentAndForecastWeather) {
+        guard let icon = weather.current?.weather?.first?.icon else { return }
+        let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+        DispatchQueue.global(qos: .utility).async {
+            guard let url = iconURL,
+                  let iconData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                self.currentWeatherImg.image = UIImage(data: iconData)
+            }
         }
         
-    } //конец вью дид лод
-    
-
-
-
-    
-    
-} //конец класса
-
+        
+        DispatchQueue.main.async {
+            guard let temp = weather.current?.temp,
+                  let sunIndex = weather.current?.uvi,
+                  let cityName = weather.timeZone,
+                  let description = weather.current?.weather?.first?.description
+            else { return }
+            
+            self.summaryWeatherInfo.text = "\(Int(temp)) °"
+            self.cityNameLable.text = cityName
+            self.textWeatherDiscription.text = "Now \(description)"
+            self.sunIndexLable.text = "Sun Index is \(Double(sunIndex))"
+        }
+    }
+}//конец класса
