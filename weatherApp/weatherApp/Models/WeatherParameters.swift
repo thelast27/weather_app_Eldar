@@ -34,7 +34,7 @@ struct CurrentWeatherData: Codable {
     var pressure: Int?
     var humidity: Int?
     var dewPoint: Double?
-    var uvi: Double?
+    var uvi: Float?
     var clouds: Int?
     var visibility: Int?
     var windSpeed: Double?

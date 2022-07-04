@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             self.summaryWeatherInfo.text = "\(Int(temp)) °"
             self.cityNameLable.text = cityName
             self.textWeatherDiscription.text = "Now \(description)"
-            self.sunIndexLable.text = "Sun Index is \(Double(sunIndex))"
+            self.sunIndexLable.text = "Sun Index is \(Int(sunIndex))"
             self.dailyTableView.reloadData()
             self.hourlyCollectionView.reloadData()
             
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentAndForecustedWeather?.hourly?.count ?? 10
+        return currentAndForecustedWeather?.hourly?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,17 +90,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentAndForecustedWeather?.daily?.count ?? 10
+        currentAndForecustedWeather?.daily?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyCollectionViewCell") as? DailyCollectionViewCell else { return UITableViewCell() }
-        if let daily = dailyWeather {
-            cell.update(date: daily[indexPath.row])
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        guard let daily = dailyWeather else { return UITableViewCell() }
+                cell.update(date: daily[indexPath.row])
+                return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

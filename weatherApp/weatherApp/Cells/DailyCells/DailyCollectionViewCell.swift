@@ -49,9 +49,7 @@ class DailyCollectionViewCell: UITableViewCell {
     
     func update(date: DailyWeatherData) {
         guard let dt = date.dt, let temp = date.temp?.day else { return }
-            let formatter = DateFormatter()
-            let date = formatter.daysFormatt(dt: dt, isTime: false)
-            dayLabel.text = date
+        dayLabel.text = dt.updateDateFormat(dateFormat: .days)
             tempLabel.text = "\(Int(temp)) °C"
     }
     

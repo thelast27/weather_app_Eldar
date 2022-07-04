@@ -44,7 +44,7 @@ extension MapViewController: GMSMapViewDelegate {
                 self.summaryWeatherInfo.text = "\(Int(temp)) °"
                 self.nameOfTappedPiont.text = cityName
                 self.textWeatherDiscription.text = "Now \(description)"
-                self.sunIndexLable.text = "Sun Index is \(Double(sunIndex))"
+                self.sunIndexLable.text = "Sun Index is \(Int(sunIndex))"
             }
         }
     }
