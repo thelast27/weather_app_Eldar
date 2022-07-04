@@ -12,7 +12,7 @@ extension Int {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = dateFormat.getString
+        dateFormatter.dateFormat = dateFormat.getDateFormat
         dateFormatter.timeZone = .current
         return dateFormatter.string(from: date)
     }
@@ -23,9 +23,9 @@ enum DateFormat: String {
     case days
     case fullTime
     
-    var getString: String {
+    var getDateFormat: String {
         switch self {
-        case .hours: return "HH"
+        case .hours: return "HH:mm"
         case .days: return "HH MMMM yyyy"
         case .fullTime: return "EEEE, d MMMM yyyy HH:mm:ss"
         }

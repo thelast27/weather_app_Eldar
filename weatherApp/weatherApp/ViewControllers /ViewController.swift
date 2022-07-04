@@ -94,8 +94,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyCollectionViewCell") as? DailyCollectionViewCell else { return UITableViewCell() }
-        guard let daily = dailyWeather else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyCollectionViewCell") as? DailyCollectionViewCell, let daily = dailyWeather else { return UITableViewCell() }
                 cell.update(date: daily[indexPath.row])
                 return cell
     }
