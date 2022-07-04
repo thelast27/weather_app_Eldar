@@ -47,10 +47,9 @@ class ViewController: UIViewController {
     func update() {
         guard let weather = currentAndForecustedWeather,
               let icon = weather.current?.weather?.first?.icon else { return }
-        let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+        let endpoint = Endpoint.getIcon(icon: "\(icon)")
         DispatchQueue.global(qos: .utility).async {
-            guard let url = iconURL,
-                  let iconData = try? Data(contentsOf: url) else { return }
+            guard let iconData = try? Data(contentsOf: endpoint.url) else { return }
             DispatchQueue.main.async {
                 self.currentWeatherImg.image = UIImage(data: iconData)
             }

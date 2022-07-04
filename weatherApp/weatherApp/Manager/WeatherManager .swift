@@ -14,18 +14,9 @@ protocol RestAPIProviderProtocol {
 
 class WeatherManager: RestAPIProviderProtocol {
     func getCoordinatesByName(forCity city: String, completionHandler: @escaping (CurrentAndForecastWeather) -> Void) {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.openweathermap.org"
-        components.path = "/geo/1.0/direct"
-        components.queryItems = [
-            URLQueryItem(name: "q", value: city),
-            URLQueryItem(name: "appid", value: weatherApiKey)
-        ]
-        guard let urlAddress = components.url else { return }
-        guard let url = URL(string: "\(urlAddress)") else { return }
-            var urlRequest = URLRequest(url: url)
-              urlRequest.httpMethod = "GET"
+        let endpint = Endpoint.geocodingURL(key: weatherApiKey, city: city)
+        var urlRequest = URLRequest(url: endpint.url)
+        urlRequest.httpMethod = "GET"
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let self = self else { return }
@@ -51,20 +42,8 @@ class WeatherManager: RestAPIProviderProtocol {
     }
     
     func getWeatherForCityCoordinates(long: Double, lat: Double, withLang lang: Languages, withUnitsOfmeasurement units: Units, completionHandler: @escaping (CurrentAndForecastWeather) -> Void) {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.openweathermap.org"
-        components.path = "/data/2.5/onecall"
-        components.queryItems = [
-            URLQueryItem(name: "lat", value: "\(lat)"),
-            URLQueryItem(name: "lon", value: "\(long)"),
-            URLQueryItem(name: "appid", value: weatherApiKey),
-            URLQueryItem(name: "lang", value: lang.shortName),
-            URLQueryItem(name: "units", value: units.main)
-        ]
-        guard let urlAddress = components.url else { return }
-        guard let url = URL(string: "\(urlAddress)") else { return }
-        var urlRequest = URLRequest(url: url)
+        let endpoint = Endpoint.currentWeather(lat: lat, lon: long, key: weatherApiKey, lang: lang.shortName, units: units.main)
+        var urlRequest = URLRequest(url: endpoint.url )
         urlRequest.httpMethod = "GET"
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: urlRequest) { data, response, error in
