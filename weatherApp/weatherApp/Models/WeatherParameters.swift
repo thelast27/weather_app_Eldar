@@ -14,18 +14,18 @@ struct CurrentAndForecastWeather: Codable {
     var lon: Double?
     var timeZone: String?
     var timeZoneOffset: Int?
-    var current: Current?
-    var minutely: [Minutely]?
-    var hourly: [Current]?
-    
+    var current: CurrentWeatherData?
+    var hourly: [HourlyWeatherData]?
+    var daily: [DailyWeatherData]?
+
     enum CodingKeys: String, CodingKey {
-        case lat, lon, current, minutely, hourly
+        case lat, lon, current, hourly, daily
         case timeZone = "timezone"
         case timeZoneOffset = "timezone_offset"
     }
 }
 
-struct Current: Codable {
+struct CurrentWeatherData: Codable {
     var dt: Int?
     var sunrise: Int?
     var sunset: Int?
@@ -34,14 +34,15 @@ struct Current: Codable {
     var pressure: Int?
     var humidity: Int?
     var dewPoint: Double?
-    var uvi: Double?
+    var uvi: Float?
     var clouds: Int?
     var visibility: Int?
     var windSpeed: Double?
     var windDeg: Int?
     var windGust: Double?
     var weather: [Weather]?
-    
+    var pop: Double?
+
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, temp, pressure, humidity, uvi, clouds, visibility, weather
         case feelsLike = "feels_like"
@@ -58,27 +59,3 @@ struct Weather: Codable {
     var description: String?
     var icon: String?
 }
-
-struct Minutely: Codable {
-    var dt: Int?
-    var precipitation: Int?
-}
-
-struct WeatherHourly: Codable {
-    var id: Int?
-    var main: String?
-    var description: String?
-    var icon: String?
-}
-
-struct Rain: Codable {
-    var oneHour: Double?
-    
-    enum CodingKeys: String, CodingKey {
-        case oneHour = "1h"
-    }
-}
-
-
-
-
