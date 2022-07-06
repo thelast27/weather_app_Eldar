@@ -34,7 +34,7 @@ class RealmWeatherHistoryVC: UIViewController {
     }
     
     func update() {
-        array = self.realmManager.giveingData()
+        array = self.realmManager.giveData()
         historyTableView.reloadData()
     }
        

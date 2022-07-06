@@ -11,7 +11,7 @@ import RealmSwift
 
 protocol RealmDataBaseProtocol {
   func reciveData(data: CurrentAndForecastWeather)
-    func giveingData() -> [WeatherForRealm]
+    func giveData() -> [WeatherForRealm]
 }
 
 class RealmManager: RealmDataBaseProtocol {
@@ -78,7 +78,7 @@ class RealmManager: RealmDataBaseProtocol {
         }
     }
     
-    func giveingData() -> [WeatherForRealm] {
+    func giveData() -> [WeatherForRealm] {
         var array: [WeatherForRealm]
         array = realm.objects(WeatherForRealm.self).map{$0}.reversed()
         return array
