@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             self.dailyWeather = weatherData.daily
             self.hourlyWeather = weatherData.hourly
             self.update()
-            self.realmManager.recivingData(data: weatherData)
+            self.realmManager.reciveData(data: weatherData)
             
         }
     } //конец вью дид лод

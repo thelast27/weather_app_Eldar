@@ -10,7 +10,7 @@ import Realm
 import RealmSwift
 
 protocol RealmDataBaseProtocol {
-  func recivingData(data: CurrentAndForecastWeather)
+  func reciveData(data: CurrentAndForecastWeather)
     func giveingData() -> [WeatherForRealm]
 }
 
@@ -27,7 +27,7 @@ class RealmManager: RealmDataBaseProtocol {
         }
     }
     
-    func recivingData(data: CurrentAndForecastWeather) {
+    func reciveData(data: CurrentAndForecastWeather) {
         let realmCoordinates = Coordinate()
         let realmWeather = WeatherForRealm()
         

@@ -26,7 +26,7 @@ class RealmDBTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func update(data: WeatherForRealm) {
+    func configuration(data: WeatherForRealm) {
         guard let long = data.coordinate?.lon, let lat = data.coordinate?.lat else { return }
         self.coordinatesLabel.text = "Long: \(long) : Lat: \(lat)"
         self.timeLabel.text = data.time.updateDateFormat(dateFormat: .fullTime)

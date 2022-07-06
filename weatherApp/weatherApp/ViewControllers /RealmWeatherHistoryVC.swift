@@ -27,9 +27,9 @@ class RealmWeatherHistoryVC: UIViewController {
 
     
     @objc func refreshAction(sender: UIRefreshControl) {
-        DispatchQueue.main.async {
-            self.update()
-            self.refresh.endRefreshing()
+        DispatchQueue.main.async { [weak self] in
+            self?.update()
+            self?.refresh.endRefreshing()
         }
     }
     
@@ -48,7 +48,7 @@ extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = historyTableView.dequeueReusableCell(withIdentifier: "RealmDBTableViewCell", for: indexPath) as? RealmDBTableViewCell else { return UITableViewCell() }
-        cell.update(data: array[indexPath.row])
+        cell.configuration(data: array[indexPath.row])
         return cell
     }
     

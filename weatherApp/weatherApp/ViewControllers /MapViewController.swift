@@ -42,7 +42,7 @@ extension MapViewController: GMSMapViewDelegate {
                       let cityName = weatherData.timeZone,
                       let description = weatherData.current?.weather?.first?.description
                 else { return }
-                self.realmManager.recivingData(data: weatherData)
+                self.realmManager.reciveData(data: weatherData)
                 self.summaryWeatherInfo.text = "\(Int(temp)) °"
                 self.nameOfTappedPiont.text = cityName
                 self.textWeatherDiscription.text = "Now \(description)"
