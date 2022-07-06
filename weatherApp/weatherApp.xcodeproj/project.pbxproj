@@ -13,9 +13,16 @@
 		4D2D1EFF28702B8B008A0E70 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D1EFD28702B8B008A0E70 /* DailyCollectionViewCell.swift */; };
 		4D2D1F0028702B8B008A0E70 /* DailyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2D1EFE28702B8B008A0E70 /* DailyCollectionViewCell.xib */; };
 		4D2D1F032872D80A008A0E70 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2D1F022872D80A008A0E70 /* APIManager.swift */; };
+		4D5E4E1128757F4B00C096B7 /* RealmDataBaseManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E4E1028757F4B00C096B7 /* RealmDataBaseManager .swift */; };
+		4D5E4E132875801500C096B7 /* WeatherForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E4E122875801500C096B7 /* WeatherForRealm.swift */; };
+		4D5E4E172875814700C096B7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4D5E4E162875814700C096B7 /* Realm */; };
+		4D5E4E192875814700C096B7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D5E4E182875814700C096B7 /* RealmSwift */; };
 		4D5FBE9A286761DB00B9D6F8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FBE99286761DB00B9D6F8 /* MapViewController.swift */; };
-		4D5FBE9C2867646A00B9D6F8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FBE9B2867646A00B9D6F8 /* TabBarViewController.swift */; };
 		4D7BA3F6286F521600EB285F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4D7BA3F5286F521600EB285F /* SnapKit */; };
+		4D92DD4628743CB100202009 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D92DD4528743CB100202009 /* Int+Extension.swift */; };
+		4DA59D3328758D72000B61BB /* RealmWeatherHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */; };
+		4DA59D3D2875B443000B61BB /* RealmDBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */; };
+		4DA59D3E2875B443000B61BB /* RealmDBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */; };
 		4DCD6B57285CB27F00A941E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B56285CB27F00A941E7 /* AppDelegate.swift */; };
 		4DCD6B59285CB27F00A941E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B58285CB27F00A941E7 /* SceneDelegate.swift */; };
 		4DCD6B5B285CB27F00A941E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B5A285CB27F00A941E7 /* ViewController.swift */; };
@@ -36,8 +43,13 @@
 		4D2D1EFD28702B8B008A0E70 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D2D1EFE28702B8B008A0E70 /* DailyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewCell.xib; sourceTree = "<group>"; };
 		4D2D1F022872D80A008A0E70 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		4D5E4E1028757F4B00C096B7 /* RealmDataBaseManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmDataBaseManager .swift"; sourceTree = "<group>"; };
+		4D5E4E122875801500C096B7 /* WeatherForRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForRealm.swift; sourceTree = "<group>"; };
 		4D5FBE99286761DB00B9D6F8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		4D5FBE9B2867646A00B9D6F8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		4D92DD4528743CB100202009 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmWeatherHistoryVC.swift; path = "/Users/eldargarbuzov/Desktop/HW/HW24-weather_app/weather_app_Eldar/weatherApp/weatherApp/ViewControllers /RealmWeatherHistoryVC.swift"; sourceTree = "<absolute>"; };
+		4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBTableViewCell.swift; sourceTree = "<group>"; };
+		4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealmDBTableViewCell.xib; sourceTree = "<group>"; };
 		4DCD6B53285CB27F00A941E7 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCD6B56285CB27F00A941E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCD6B58285CB27F00A941E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5E4E192875814700C096B7 /* RealmSwift in Frameworks */,
+				4D5E4E172875814700C096B7 /* Realm in Frameworks */,
 				1BE7A56D9FEB8E7C86387DA5 /* libPods-weatherApp.a in Frameworks */,
 				4D7BA3F6286F521600EB285F /* SnapKit in Frameworks */,
 			);
@@ -95,6 +109,7 @@
 				4DE53558286AF412003E3692 /* HourlyWeatherData.swift */,
 				4DE5355A286AF444003E3692 /* DailyWeatherData.swift */,
 				4DCD6B6A285CD87C00A941E7 /* WeatherParameters.swift */,
+				4D5E4E122875801500C096B7 /* WeatherForRealm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,6 +138,7 @@
 				4D27677628633EC1006D4868 /* WeatherManager .swift */,
 				4DCD6B64285CB28200A941E7 /* Info.plist */,
 				4D2D1F022872D80A008A0E70 /* APIManager.swift */,
+				4D5E4E1028757F4B00C096B7 /* RealmDataBaseManager .swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -132,9 +148,17 @@
 			children = (
 				4D5FBE99286761DB00B9D6F8 /* MapViewController.swift */,
 				4DCD6B5A285CB27F00A941E7 /* ViewController.swift */,
-				4D5FBE9B2867646A00B9D6F8 /* TabBarViewController.swift */,
+				4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */,
 			);
 			path = "ViewControllers ";
+			sourceTree = "<group>";
+		};
+		4D92DD4728743CC800202009 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4D92DD4528743CB100202009 /* Int+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4DCD6B4A285CB27E00A941E7 = {
@@ -158,6 +182,7 @@
 		4DCD6B55285CB27F00A941E7 /* weatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4D92DD4728743CC800202009 /* Extensions */,
 				4DE8E96D286ED74700FA2507 /* Cells */,
 				4D27677C28634769006D4868 /* System Delegates  */,
 				4D5FBE9E2869990500B9D6F8 /* ViewControllers  */,
@@ -173,6 +198,8 @@
 			children = (
 				4DE8E96E286ED75000FA2507 /* HourlyCells */,
 				4D2D1F0128702B90008A0E70 /* DailyCells */,
+				4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */,
+				4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -215,6 +242,8 @@
 			name = weatherApp;
 			packageProductDependencies = (
 				4D7BA3F5286F521600EB285F /* SnapKit */,
+				4D5E4E162875814700C096B7 /* Realm */,
+				4D5E4E182875814700C096B7 /* RealmSwift */,
 			);
 			productName = weatherApp;
 			productReference = 4DCD6B53285CB27F00A941E7 /* weatherApp.app */;
@@ -246,6 +275,7 @@
 			mainGroup = 4DCD6B4A285CB27E00A941E7;
 			packageReferences = (
 				4D7BA3F4286F521600EB285F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4D5E4E152875814700C096B7 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4DCD6B54285CB27F00A941E7 /* Products */;
 			projectDirPath = "";
@@ -266,6 +296,7 @@
 				4DCD6B5E285CB27F00A941E7 /* Main.storyboard in Resources */,
 				4DE8E96C286ED73C00FA2507 /* HourlyCollectionViewCell.xib in Resources */,
 				4D2D1F0028702B8B008A0E70 /* DailyCollectionViewCell.xib in Resources */,
+				4DA59D3E2875B443000B61BB /* RealmDBTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,9 +349,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D5FBE9C2867646A00B9D6F8 /* TabBarViewController.swift in Sources */,
 				4DCD6B5B285CB27F00A941E7 /* ViewController.swift in Sources */,
 				4DE8E96B286ED73C00FA2507 /* HourlyCollectionViewCell.swift in Sources */,
+				4DA59D3328758D72000B61BB /* RealmWeatherHistoryVC.swift in Sources */,
+				4DA59D3D2875B443000B61BB /* RealmDBTableViewCell.swift in Sources */,
+				4D5E4E132875801500C096B7 /* WeatherForRealm.swift in Sources */,
 				4DCD6B57285CB27F00A941E7 /* AppDelegate.swift in Sources */,
 				4DCD6B6B285CD87C00A941E7 /* WeatherParameters.swift in Sources */,
 				4DE5355B286AF444003E3692 /* DailyWeatherData.swift in Sources */,
@@ -328,7 +361,9 @@
 				4D27677728633EC1006D4868 /* WeatherManager .swift in Sources */,
 				4D27677928634370006D4868 /* Geolocation.swift in Sources */,
 				4DCD6B59285CB27F00A941E7 /* SceneDelegate.swift in Sources */,
+				4D92DD4628743CB100202009 /* Int+Extension.swift in Sources */,
 				4D2D1F032872D80A008A0E70 /* APIManager.swift in Sources */,
+				4D5E4E1128757F4B00C096B7 /* RealmDataBaseManager .swift in Sources */,
 				4D5FBE9A286761DB00B9D6F8 /* MapViewController.swift in Sources */,
 				4DE53559286AF412003E3692 /* HourlyWeatherData.swift in Sources */,
 			);
@@ -554,6 +589,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4D5E4E152875814700C096B7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
 		4D7BA3F4286F521600EB285F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -565,6 +608,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4D5E4E162875814700C096B7 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D5E4E152875814700C096B7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		4D5E4E182875814700C096B7 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D5E4E152875814700C096B7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		4D7BA3F5286F521600EB285F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4D7BA3F4286F521600EB285F /* XCRemoteSwiftPackageReference "SnapKit" */;

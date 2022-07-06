@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var currentAndForecustedWeather: CurrentAndForecastWeather?
     var hourlyWeather: [HourlyWeatherData]?
     var dailyWeather: [DailyWeatherData]?
+    var realmManager: RealmDataBaseProtocol = RealmManager()
     
     
     override func viewDidLoad() {
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
             self.dailyWeather = weatherData.daily
             self.hourlyWeather = weatherData.hourly
             self.update()
+            self.realmManager.reciveData(data: weatherData)
             
         }
     } //конец вью дид лод
