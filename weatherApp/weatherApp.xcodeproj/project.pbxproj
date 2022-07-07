@@ -23,6 +23,7 @@
 		4DA59D3328758D72000B61BB /* RealmWeatherHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */; };
 		4DA59D3D2875B443000B61BB /* RealmDBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */; };
 		4DA59D3E2875B443000B61BB /* RealmDBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */; };
+		4DA59D402876D0F5000B61BB /* Notification.name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA59D3F2876D0F5000B61BB /* Notification.name+Extension.swift */; };
 		4DCD6B57285CB27F00A941E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B56285CB27F00A941E7 /* AppDelegate.swift */; };
 		4DCD6B59285CB27F00A941E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B58285CB27F00A941E7 /* SceneDelegate.swift */; };
 		4DCD6B5B285CB27F00A941E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD6B5A285CB27F00A941E7 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmWeatherHistoryVC.swift; path = "/Users/eldargarbuzov/Desktop/HW/HW24-weather_app/weather_app_Eldar/weatherApp/weatherApp/ViewControllers /RealmWeatherHistoryVC.swift"; sourceTree = "<absolute>"; };
 		4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBTableViewCell.swift; sourceTree = "<group>"; };
 		4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealmDBTableViewCell.xib; sourceTree = "<group>"; };
+		4DA59D3F2876D0F5000B61BB /* Notification.name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.name+Extension.swift"; sourceTree = "<group>"; };
 		4DCD6B53285CB27F00A941E7 /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCD6B56285CB27F00A941E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DCD6B58285CB27F00A941E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				4D92DD4528743CB100202009 /* Int+Extension.swift */,
+				4DA59D3F2876D0F5000B61BB /* Notification.name+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA59D402876D0F5000B61BB /* Notification.name+Extension.swift in Sources */,
 				4DCD6B5B285CB27F00A941E7 /* ViewController.swift in Sources */,
 				4DE8E96B286ED73C00FA2507 /* HourlyCollectionViewCell.swift in Sources */,
 				4DA59D3328758D72000B61BB /* RealmWeatherHistoryVC.swift in Sources */,

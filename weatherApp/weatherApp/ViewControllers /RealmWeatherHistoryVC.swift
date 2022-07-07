@@ -20,11 +20,15 @@ class RealmWeatherHistoryVC: UIViewController {
         super.viewDidLoad()
         historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
         update()
+        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .databaseUpdated, object: nil)
         refresh.addTarget(self, action: #selector(refreshAction), for: UIControl.Event.valueChanged)
         historyTableView.addSubview(refresh)
         
     } //end of view did load
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc func refreshAction(sender: UIRefreshControl) {
         DispatchQueue.main.async { [weak self] in
@@ -33,7 +37,7 @@ class RealmWeatherHistoryVC: UIViewController {
         }
     }
     
-    func update() {
+    @objc func update() {
         array = self.realmManager.giveData()
         historyTableView.reloadData()
     }
