@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let notificationCenter = UNUserNotificationCenter.current()
     
     @IBOutlet weak var summaryWeatherInfo: UILabel!
     @IBOutlet weak var currentWeatherImg: UIImageView!
@@ -72,6 +73,34 @@ class ViewController: UIViewController {
             
         }
     }
+    //    MARK: - set LocalNotification
+    func setLocalNotification(body: String, title: String, dateComponents: DateComponents) {
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] isAutorized, error in
+            guard let self = self else { return }
+            if isAutorized {
+                let content = UNMutableNotificationContent()
+                content.body = body
+                content.title = title
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                let identifier = "identifier"
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                
+                self.notificationCenter.add(request) { error in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+            } else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    func removeAllNotification() {
+        notificationCenter.removeAllPendingNotificationRequests()
+    }
+    //    MARK: - end local notification 
 } //конец класса
 
 
@@ -97,8 +126,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyCollectionViewCell") as? DailyCollectionViewCell, let daily = dailyWeather else { return UITableViewCell() }
-                cell.update(date: daily[indexPath.row])
-                return cell
+        cell.update(date: daily[indexPath.row])
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
