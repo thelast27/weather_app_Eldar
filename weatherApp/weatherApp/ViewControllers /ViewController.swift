@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             self.dailyWeather = weatherData.daily
             self.hourlyWeather = weatherData.hourly
             self.update()
-            self.realmManager.reciveData(data: weatherData)
+            self.realmManager.receiveData(data: weatherData)
             guard let weather = self.hourlyWeather else { return }
             self.weatherForecast(hourlyWeather: weather)
             self.removeAllNotification()
@@ -110,24 +110,19 @@ class ViewController: UIViewController {
     }
     
     func weatherForecast(hourlyWeather: [HourlyWeatherData]) {
-        var index = 0
         for hour in hourlyWeather {
             guard let id = hour.weather?.first?.id, let time = hour.dt else { return }
-            if index == 0 || index > 3 {
+            if id != 800 {
                 switch id {
                 case 200...232:
                     setLocalNotification(body: "Thunderstorm is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
-                    index = 1
                 case 500...531:
                     setLocalNotification(body: "Rain is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
-                    index = 1
                 case 600...622:
                     setLocalNotification(body: "Snow is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
-                    index = 1
                 default: break
                 }
             }
-            index += 1
         }
     }
     
