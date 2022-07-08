@@ -80,8 +80,6 @@ class RealmManager: RealmDataBaseProtocol {
     }
     
     func giveData() -> [WeatherForRealm] {
-        var array: [WeatherForRealm]
-        array = realm.objects(WeatherForRealm.self).map{$0}.reversed()
-        return array
+        try! Realm().objects(WeatherForRealm.self).map{$0}.reversed()
     }
 }
