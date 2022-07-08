@@ -19,7 +19,8 @@ class RealmManager: RealmDataBaseProtocol {
     var realm: Realm!
     
     init() {
-        let configuration = Realm.Configuration()
+        var configuration = Realm.Configuration()
+        configuration.deleteRealmIfMigrationNeeded = true
         do {
             realm = try Realm(configuration: configuration)
         } catch {
