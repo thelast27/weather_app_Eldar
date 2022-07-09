@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RealmWeatherHistoryVC: UIViewController {
     
@@ -13,16 +14,18 @@ class RealmWeatherHistoryVC: UIViewController {
     
     var realmManager: RealmDataBaseProtocol = RealmManager()
     var array: [WeatherForRealm] = []
-    var refresh = UIRefreshControl()
+  
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
+       
         historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
         update()
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: .databaseUpdated, object: nil)
-        refresh.addTarget(self, action: #selector(refreshAction), for: UIControl.Event.valueChanged)
-        historyTableView.addSubview(refresh)
         
     } //end of view did load
 
@@ -30,18 +33,10 @@ class RealmWeatherHistoryVC: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func refreshAction(sender: UIRefreshControl) {
-        DispatchQueue.main.async { [weak self] in
-            self?.update()
-            self?.refresh.endRefreshing()
-        }
-    }
-    
     @objc func update() {
         array = self.realmManager.giveData()
         historyTableView.reloadData()
     }
-       
 } // end of class
 
 extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
