@@ -10,39 +10,63 @@ import RealmSwift
 
 class RealmWeatherHistoryVC: UIViewController {
     
+    let realm = try! Realm()
+    
     @IBOutlet weak var historyTableView: UITableView!
     
     var realmManager: RealmDataBaseProtocol = RealmManager()
     var array: [WeatherForRealm] = []
-  
+    var resultsRealmData: Results<WeatherForRealm>!
+    var notificationToken: NotificationToken?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         
-       
+        resultsRealmData = realm.objects(WeatherForRealm.self)
+        notificationToken = resultsRealmData.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.historyTableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                })
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+        
         historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
+//        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .databaseUpdated, object: nil)
         update()
-        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .databaseUpdated, object: nil)
-        
+        historyTableView.reloadData()
     } //end of view did load
-
+    
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        notificationToken?.invalidate()
     }
     
     @objc func update() {
         array = self.realmManager.giveData()
-        historyTableView.reloadData()
+        
     }
 } // end of class
 
 extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        if resultsRealmData.count != 0 {
+            return resultsRealmData.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,10 +76,21 @@ extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 120
+        return 120
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         historyTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editingRow = resultsRealmData[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { _,_ in
+            try! self.realm.write {
+                self.realm.delete(editingRow)
+            }
+        }
+        return [deleteAction]
     }
 }
 
