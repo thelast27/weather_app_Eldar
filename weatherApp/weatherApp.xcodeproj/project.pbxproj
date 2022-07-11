@@ -118,13 +118,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4D27677C28634769006D4868 /* System Delegates  */ = {
+		4D27677C28634769006D4868 /* System Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				4DCD6B56285CB27F00A941E7 /* AppDelegate.swift */,
 				4DCD6B58285CB27F00A941E7 /* SceneDelegate.swift */,
 			);
-			path = "System Delegates ";
+			path = "System Delegates";
 			sourceTree = "<group>";
 		};
 		4D2D1F0128702B90008A0E70 /* DailyCells */ = {
@@ -190,7 +190,7 @@
 			children = (
 				4D92DD4728743CC800202009 /* Extensions */,
 				4DE8E96D286ED74700FA2507 /* Cells */,
-				4D27677C28634769006D4868 /* System Delegates  */,
+				4D27677C28634769006D4868 /* System Delegates */,
 				4D5FBE9E2869990500B9D6F8 /* ViewControllers */,
 				4D5FBE9D2869976F00B9D6F8 /* Manager */,
 				4D27677B2863474D006D4868 /* Models */,
