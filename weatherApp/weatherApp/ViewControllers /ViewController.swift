@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let notificationCenter = UNUserNotificationCenter.current()
     
     @IBOutlet weak var summaryWeatherInfo: UILabel!
     @IBOutlet weak var currentWeatherImg: UIImageView!
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
     var currentAndForecustedWeather: CurrentAndForecastWeather?
     var hourlyWeather: [HourlyWeatherData]?
     var dailyWeather: [DailyWeatherData]?
+    var realmManager: RealmDataBaseProtocol = RealmManager()
     
     
     override func viewDidLoad() {
@@ -40,6 +42,10 @@ class ViewController: UIViewController {
             self.dailyWeather = weatherData.daily
             self.hourlyWeather = weatherData.hourly
             self.update()
+            self.realmManager.receiveData(data: weatherData)
+            guard let weather = self.hourlyWeather else { return }
+            self.weatherForecast(hourlyWeather: weather)
+            self.removeAllNotification()
             
         }
     } //конец вью дид лод
@@ -70,6 +76,52 @@ class ViewController: UIViewController {
             
         }
     }
+    //    MARK: - set LocalNotification
+    func setLocalNotification(body: String, title: String, dateComponents: DateComponents) {
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] isAutorized, error in
+            guard let self = self else { return }
+            if isAutorized {
+                let content = UNMutableNotificationContent()
+                content.body = body
+                content.title = title
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                let identifier = "identifier"
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                
+                self.notificationCenter.add(request) { error in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+            } else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    
+    func weatherForecast(hourlyWeather: [HourlyWeatherData]) {
+        for hour in hourlyWeather {
+            guard let id = hour.weather?.first?.id, let time = hour.dt else { return }
+            if id != 800 {
+                switch id {
+                case 200...232:
+                    setLocalNotification(body: "Thunderstorm is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                case 500...531:
+                    setLocalNotification(body: "Rain is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                case 600...622:
+                    setLocalNotification(body: "Snow is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                default: break
+                }
+            }
+        }
+    }
+    
+    func removeAllNotification() {
+        notificationCenter.removeAllPendingNotificationRequests()
+    }
+    //    MARK: - end local notification
 } //конец класса
 
 
@@ -95,8 +147,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyCollectionViewCell") as? DailyCollectionViewCell, let daily = dailyWeather else { return UITableViewCell() }
-                cell.update(date: daily[indexPath.row])
-                return cell
+        cell.update(date: daily[indexPath.row])
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
