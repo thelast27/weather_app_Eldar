@@ -14,11 +14,14 @@ protocol RealmDataBaseProtocol {
     func getData() -> [WeatherForRealm]
 }
 
+var realm = try! Realm()
+var resultsRealmData: Results<WeatherForRealm>! = realm.objects(WeatherForRealm.self)
+var notificationToken: NotificationToken?
+
+
+
 class RealmManager: RealmDataBaseProtocol {
- 
-    
-    
-    var realm: Realm!
+
     
     init() {
         var configuration = Realm.Configuration()

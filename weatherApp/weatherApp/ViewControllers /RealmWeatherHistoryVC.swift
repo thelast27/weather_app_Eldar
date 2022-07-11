@@ -10,22 +10,15 @@ import RealmSwift
 
 class RealmWeatherHistoryVC: UIViewController {
     
-    let realm = try! Realm()
     
     @IBOutlet weak var historyTableView: UITableView!
-    
-    var realmManager: RealmDataBaseProtocol = RealmManager()
 
-    var resultsRealmData: Results<WeatherForRealm>!
-    var notificationToken: NotificationToken?
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
         
-        resultsRealmData = realm.objects(WeatherForRealm.self)
         notificationToken = resultsRealmData.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.historyTableView else { return }
             switch changes {
@@ -44,7 +37,6 @@ class RealmWeatherHistoryVC: UIViewController {
                 fatalError("\(error)")
             }
         }
-//        update()
         historyTableView.reloadData()
     } //end of view did load
     
@@ -52,10 +44,6 @@ class RealmWeatherHistoryVC: UIViewController {
         notificationToken?.invalidate()
     }
     
-//    @objc func update() {
-//        array = self.realmManager.giveData()
-//        
-//    }
 } // end of class
 
 extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
@@ -78,15 +66,15 @@ extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
         historyTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editingRow = resultsRealmData[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { _,_ in
-            try! self.realm.write {
-                self.realm.delete(editingRow)
-            }
-        }
-        return [deleteAction]
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let editingRow = resultsRealmData[indexPath.row]
+//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { _,_ in
+//            try! self.realm.write {
+//                self.realm.delete(editingRow)
+//            }
+//        }
+//        return [deleteAction]
+//    }
 }
 
 
