@@ -85,6 +85,6 @@ class RealmManager: RealmDataBaseProtocol {
     }
     
     func getData() -> [WeatherForRealm] {
-        try! Realm().objects(WeatherForRealm.self).map{$0}.reversed()
+        resultsRealmData.reversed()
     }
 }
