@@ -23,6 +23,7 @@ class RealmWeatherHistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
         
         resultsRealmData = realm.objects(WeatherForRealm.self)
         notificationToken = resultsRealmData.observe { [weak self] (changes: RealmCollectionChange) in
@@ -43,9 +44,6 @@ class RealmWeatherHistoryVC: UIViewController {
                 fatalError("\(error)")
             }
         }
-        
-        historyTableView.register(UINib(nibName: "RealmDBTableViewCell", bundle: nil), forCellReuseIdentifier: "RealmDBTableViewCell")
-//        NotificationCenter.default.addObserver(self, selector: #selector(update), name: .databaseUpdated, object: nil)
         update()
         historyTableView.reloadData()
     } //end of view did load
@@ -71,7 +69,7 @@ extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = historyTableView.dequeueReusableCell(withIdentifier: "RealmDBTableViewCell", for: indexPath) as? RealmDBTableViewCell else { return UITableViewCell() }
-        cell.configuration(data: array[indexPath.row])
+        cell.configuration(data: resultsRealmData[indexPath.row])
         return cell
     }
     
