@@ -15,7 +15,7 @@ class RealmWeatherHistoryVC: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
     
     var realmManager: RealmDataBaseProtocol = RealmManager()
-    var array: [WeatherForRealm] = []
+
     var resultsRealmData: Results<WeatherForRealm>!
     var notificationToken: NotificationToken?
     
@@ -44,7 +44,7 @@ class RealmWeatherHistoryVC: UIViewController {
                 fatalError("\(error)")
             }
         }
-        update()
+//        update()
         historyTableView.reloadData()
     } //end of view did load
     
@@ -52,19 +52,16 @@ class RealmWeatherHistoryVC: UIViewController {
         notificationToken?.invalidate()
     }
     
-    @objc func update() {
-        array = self.realmManager.giveData()
-        
-    }
+//    @objc func update() {
+//        array = self.realmManager.giveData()
+//        
+//    }
 } // end of class
 
 extension RealmWeatherHistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if resultsRealmData.count != 0 {
-            return resultsRealmData.count
-        }
-        return 0
+        resultsRealmData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
