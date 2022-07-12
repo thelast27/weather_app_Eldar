@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 content.body = body
                 content.title = title
                 
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                 let identifier = "identifier"
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 
