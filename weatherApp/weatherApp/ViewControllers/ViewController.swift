@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 content.body = body
                 content.title = title
                 
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
                 let identifier = "identifier"
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 
@@ -102,19 +102,24 @@ class ViewController: UIViewController {
     
     
     func weatherForecast(hourlyWeather: [HourlyWeatherData]) {
+        var indexOfNotification = 0
         for hour in hourlyWeather {
             guard let id = hour.weather?.first?.id, let time = hour.dt else { return }
-            if id != 800 {
+            if indexOfNotification == 0 || indexOfNotification > 3 {
                 switch id {
                 case 200...232:
                     setLocalNotification(body: "Thunderstorm is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                    indexOfNotification = 1
                 case 500...531:
                     setLocalNotification(body: "Rain is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                    indexOfNotification = 1
                 case 600...622:
                     setLocalNotification(body: "Snow is coming", title: "Attantion", dateComponents: getDateComponentsFrom(date: time))
+                    indexOfNotification = 1
                 default: break
                 }
             }
+            indexOfNotification += 1
         }
     }
     
