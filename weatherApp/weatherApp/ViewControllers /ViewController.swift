@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentWeatherImg: UIImageView!
     @IBOutlet weak var cityNameLable: UILabel!
     @IBOutlet weak var textWeatherDiscription: UILabel!
-    @IBOutlet weak var sunIndexLable: UILabel!
     @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     @IBOutlet weak var dailyTableView: UITableView!
@@ -62,7 +61,6 @@ class ViewController: UIViewController {
         }
         DispatchQueue.main.async {
             guard let temp = weather.current?.temp,
-                  let sunIndex = weather.current?.uvi,
                   let cityName = weather.timeZone,
                   let description = weather.current?.weather?.first?.description
             else { return }
@@ -70,7 +68,6 @@ class ViewController: UIViewController {
             self.summaryWeatherInfo.text = "\(Int(temp)) °"
             self.cityNameLable.text = cityName
             self.textWeatherDiscription.text = "Now \(description)"
-            self.sunIndexLable.text = "Sun Index is \(Int(sunIndex))"
             self.dailyTableView.reloadData()
             self.hourlyCollectionView.reloadData()
             
