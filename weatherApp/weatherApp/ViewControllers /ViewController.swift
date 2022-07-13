@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     @IBOutlet weak var dailyTableView: UITableView!
     
+    @IBOutlet weak var todayTempMin: UILabel!
     
+    @IBOutlet weak var todayTempMax: UILabel!
     
     var weatherManager: RestAPIProviderProtocol = WeatherManager()
     var currentAndForecustedWeather: CurrentAndForecastWeather?
@@ -62,12 +64,16 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             guard let temp = weather.current?.temp,
                   let cityName = weather.timeZone,
-                  let description = weather.current?.weather?.first?.description
+                  let description = weather.current?.weather?.first?.description,
+                    let todayMin = weather.daily?.first?.temp?.min,
+                    let todayMax = weather.daily?.first?.temp?.max
             else { return }
             
             self.summaryWeatherInfo.text = "\(Int(temp)) °"
             self.cityNameLable.text = cityName
             self.textWeatherDiscription.text = "Now \(description)"
+            self.todayTempMin.text = "Min.:\(Int(todayMin))°,"
+            self.todayTempMax.text = "Max.:\(Int(todayMax))°"
             self.dailyTableView.reloadData()
             self.hourlyCollectionView.reloadData()
             
