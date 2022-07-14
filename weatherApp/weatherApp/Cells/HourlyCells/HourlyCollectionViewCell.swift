@@ -51,10 +51,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
             make.left.right.bottom.equalToSuperview().inset(16)
             make.top.equalTo(weatherIcon.snp.bottom).inset(16)
         }
-        
-        self.backgroundColor = .clear
-        self.backgroundColor = .clear.withAlphaComponent(0)
-     
+ 
 
     } //end of awake
     

@@ -49,7 +49,7 @@
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IXq-ay-W1t">
                                             <rect key="frame" x="0.0" y="318" width="414" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XQa-fB-vGw">
                                                 <size key="itemSize" width="125" height="128"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -63,7 +63,9 @@
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="haZ-KL-7li" customClass="HourlyCollectionViewCell" customModule="weatherApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="128"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </collectionViewCellContentView>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <size key="customSize" width="125" height="128"/>
                                                 </collectionViewCell>
                                             </cells>
@@ -73,17 +75,22 @@
                                             </connections>
                                         </collectionView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-ya-uq5">
-                                            <rect key="frame" x="16" y="454" width="382" height="261"/>
+                                            <rect key="frame" x="0.0" y="454" width="414" height="360"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyCollectionViewCell" id="axl-Hr-ZXE" customClass="DailyCollectionViewCell" customModule="weatherApp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="44.5" width="382" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="axl-Hr-ZXE" id="Fbl-bH-g8Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="43.5"/>
+                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.94999999999999996" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="axl-Hr-ZXE" id="Fbl-bH-g8Q">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableViewCellContentView>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </tableViewCell>
                                             </prototypes>
                                             <connections>
@@ -91,10 +98,6 @@
                                                 <outlet property="delegate" destination="BYZ-38-t0r" id="63u-gn-8Md"/>
                                             </connections>
                                         </tableView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIq-IB-JvA">
-                                            <rect key="frame" x="16" y="723" width="127" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4j-td-fBQ">
                                             <rect key="frame" x="127" y="99" width="160" height="93.5"/>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -171,7 +174,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="4tV-Gf-WtA"/>
                     <connections>
                         <outlet property="cityNameLable" destination="W9x-MH-me7" id="1ym-rm-gOh"/>
-                        <outlet property="currentWeatherImg" destination="yIq-IB-JvA" id="wQF-Qo-mz7"/>
                         <outlet property="dailyTableView" destination="gCe-ya-uq5" id="f3T-co-hHz"/>
                         <outlet property="hourlyCollectionView" destination="IXq-ay-W1t" id="sbU-KG-66a"/>
                         <outlet property="imageViewForBackgroundPic" destination="Zh9-hU-owl" id="hir-Jd-XW5"/>
