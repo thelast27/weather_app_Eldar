@@ -15,30 +15,41 @@ class DailyCollectionViewCell: UITableViewCell {
     
     var dayLabel = UILabel()
     var tempLabel = UILabel()
+    let weatherIcon = UIImageView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         dayLabel.text = ""
         tempLabel.text = ""
         contentView.addSubview(dayLabel)
         contentView.addSubview(tempLabel)
+        contentView.addSubview(weatherIcon)
         
         dayLabel.snp.makeConstraints { make in
-            make.height.equalTo(30)
-            make.top.left.equalToSuperview().inset(16)
-            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+            make.width.equalTo(120)
+            make.left.equalToSuperview().inset(16)
+            make.top.bottom.equalToSuperview().inset(2)
+            
+        }
+        
+        weatherIcon.snp.makeConstraints { make in
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+            make.left.equalTo(dayLabel.snp.right).inset(8)
+            make.top.bottom.equalToSuperview().inset(2)
         }
         
         tempLabel.snp.makeConstraints { make in
-            make.height.equalTo(30)
-            make.left.equalToSuperview().inset(16)
-            make.top.equalTo(8)
-            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+            make.width.equalTo(60)
+            make.left.equalTo(weatherIcon.snp.right).inset(2)
+            make.top.bottom.equalToSuperview().inset(2)
+            
     }
 
-        self.backgroundColor = .systemMint
+        self.backgroundColor = .clear
         
 } //end of awake
     
@@ -48,7 +59,10 @@ class DailyCollectionViewCell: UITableViewCell {
     
     
     func update(date: DailyWeatherData) {
-        guard let dt = date.dt, let temp = date.temp?.day else { return }
+        guard let dt = date.dt, let temp = date.temp?.day, let icon = date.weather?.first?.icon else { return }
+        let endpoint = Endpoint.getIcon(icon: "\(icon)")
+        guard let iconData = try? Data(contentsOf: endpoint.url) else { return }
+        weatherIcon.image = UIImage(data: iconData)
         dayLabel.text = dt.updateDateFormat(dateFormat: .days)
             tempLabel.text = "\(Int(temp)) °C"
     }

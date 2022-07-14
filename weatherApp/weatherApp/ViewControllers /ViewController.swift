@@ -12,15 +12,15 @@ class ViewController: UIViewController {
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBOutlet weak var summaryWeatherInfo: UILabel!
-    @IBOutlet weak var currentWeatherImg: UIImageView!
     @IBOutlet weak var cityNameLable: UILabel!
     @IBOutlet weak var textWeatherDiscription: UILabel!
-    @IBOutlet weak var sunIndexLable: UILabel!
     @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     @IBOutlet weak var dailyTableView: UITableView!
     
+    @IBOutlet weak var todayTempMin: UILabel!
     
+    @IBOutlet weak var todayTempMax: UILabel!
     
     var weatherManager: RestAPIProviderProtocol = WeatherManager()
     var currentAndForecustedWeather: CurrentAndForecastWeather?
@@ -56,21 +56,20 @@ class ViewController: UIViewController {
         let endpoint = Endpoint.getIcon(icon: "\(icon)")
         DispatchQueue.global(qos: .utility).async {
             guard let iconData = try? Data(contentsOf: endpoint.url) else { return }
-            DispatchQueue.main.async {
-                self.currentWeatherImg.image = UIImage(data: iconData)
-            }
         }
         DispatchQueue.main.async {
             guard let temp = weather.current?.temp,
-                  let sunIndex = weather.current?.uvi,
                   let cityName = weather.timeZone,
-                  let description = weather.current?.weather?.first?.description
+                  let description = weather.current?.weather?.first?.description,
+                    let todayMin = weather.daily?.first?.temp?.min,
+                    let todayMax = weather.daily?.first?.temp?.max
             else { return }
             
             self.summaryWeatherInfo.text = "\(Int(temp)) °"
             self.cityNameLable.text = cityName
             self.textWeatherDiscription.text = "Now \(description)"
-            self.sunIndexLable.text = "Sun Index is \(Int(sunIndex))"
+            self.todayTempMin.text = "Min.:\(Int(todayMin))°,"
+            self.todayTempMax.text = "Max.:\(Int(todayMax))°"
             self.dailyTableView.reloadData()
             self.hourlyCollectionView.reloadData()
             
@@ -152,5 +151,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Weather forecast for 7 days"
     }
 }

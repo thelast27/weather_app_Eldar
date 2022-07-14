@@ -50,7 +50,7 @@
 		4D5FBE99286761DB00B9D6F8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4D8DA7D8287C2B9A0029B834 /* DataComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataComponents.swift; sourceTree = "<group>"; };
 		4D92DD4528743CB100202009 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
-		4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmWeatherHistoryVC.swift; path = "/Users/eldargarbuzov/Desktop/HW/HW24-weather_app/weather_app_Eldar/weatherApp/weatherApp/ViewControllers /RealmWeatherHistoryVC.swift"; sourceTree = "<absolute>"; };
+		4DA59D3228758D72000B61BB /* RealmWeatherHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeatherHistoryVC.swift; sourceTree = "<group>"; };
 		4DA59D3B2875B443000B61BB /* RealmDBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBTableViewCell.swift; sourceTree = "<group>"; };
 		4DA59D3C2875B443000B61BB /* RealmDBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealmDBTableViewCell.xib; sourceTree = "<group>"; };
 		4DA59D3F2876D0F5000B61BB /* Notification.name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.name+Extension.swift"; sourceTree = "<group>"; };
@@ -60,7 +60,6 @@
 		4DCD6B5A285CB27F00A941E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4DCD6B5D285CB27F00A941E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DCD6B62285CB28200A941E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4DCD6B64285CB28200A941E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Info.plist; sourceTree = "<group>"; };
 		4DCD6B6A285CD87C00A941E7 /* WeatherParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParameters.swift; sourceTree = "<group>"; };
 		4DE53558286AF412003E3692 /* HourlyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherData.swift; sourceTree = "<group>"; };
 		4DE5355A286AF444003E3692 /* DailyWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherData.swift; sourceTree = "<group>"; };
@@ -140,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				4D27677628633EC1006D4868 /* WeatherManager .swift */,
-				4DCD6B64285CB28200A941E7 /* Info.plist */,
 				4D2D1F022872D80A008A0E70 /* APIManager.swift */,
 				4D5E4E1028757F4B00C096B7 /* RealmDataBaseManager .swift */,
 			);
