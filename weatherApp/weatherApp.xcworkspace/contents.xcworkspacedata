@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/eldargarbuzov/Desktop/HW/HW24-weather_app/weather_app_Eldar/weatherApp/weatherApp/ViewControllers /RealmWeatherHistoryVC.swift">
-   </FileRef>
-   <FileRef
       location = "group:weatherApp/Extensions /DateFormatExtension .swift">
    </FileRef>
    <FileRef
