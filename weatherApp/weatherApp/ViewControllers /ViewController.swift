@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     let notificationCenter = UNUserNotificationCenter.current()
     
     @IBOutlet weak var summaryWeatherInfo: UILabel!
-    @IBOutlet weak var currentWeatherImg: UIImageView!
     @IBOutlet weak var cityNameLable: UILabel!
     @IBOutlet weak var textWeatherDiscription: UILabel!
     @IBOutlet weak var imageViewForBackgroundPic: UIImageView!
@@ -57,9 +56,6 @@ class ViewController: UIViewController {
         let endpoint = Endpoint.getIcon(icon: "\(icon)")
         DispatchQueue.global(qos: .utility).async {
             guard let iconData = try? Data(contentsOf: endpoint.url) else { return }
-            DispatchQueue.main.async {
-                self.currentWeatherImg.image = UIImage(data: iconData)
-            }
         }
         DispatchQueue.main.async {
             guard let temp = weather.current?.temp,
@@ -155,5 +151,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Weather forecast for 10 days"
     }
 }
