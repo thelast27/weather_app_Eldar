@@ -42,11 +42,15 @@ extension MapViewController: GMSMapViewDelegate {
                       let cityName = weatherData.timeZone,
                       let description = weatherData.current?.weather?.first?.description
                 else { return }
-                self.realmManager.receiveData(data: weatherData)
+                self.summaryWeatherInfo.isHidden = false
+                self.nameOfTappedPiont.isHidden = false
+                self.textWeatherDiscription.isHidden = false
+                self.sunIndexLable.isHidden = false
                 self.summaryWeatherInfo.text = "\(Int(temp)) °"
                 self.nameOfTappedPiont.text = cityName
                 self.textWeatherDiscription.text = "Now \(description)"
                 self.sunIndexLable.text = "Sun Index is \(Int(sunIndex))"
+                self.realmManager.receiveData(data: weatherData)
             }
         }
     }
