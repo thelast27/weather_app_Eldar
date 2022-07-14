@@ -18,7 +18,6 @@ class DailyCollectionViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         dayLabel.text = ""
         tempLabel.text = ""
@@ -38,7 +37,7 @@ class DailyCollectionViewCell: UITableViewCell {
             make.right.equalToSuperview().inset(16)
     }
 
-        self.backgroundColor = .systemMint
+        self.backgroundColor = .clear
         
 } //end of awake
     
