@@ -16,8 +16,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="lMA-oe-eND">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.3236905336" green="0.66599529980000005" blue="0.51427048440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" systemColor="labelColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qKn-ef-b0n"/>
@@ -75,7 +76,7 @@
                                             </connections>
                                         </collectionView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-ya-uq5">
-                                            <rect key="frame" x="0.0" y="454" width="414" height="360"/>
+                                            <rect key="frame" x="0.0" y="454" width="414" height="326"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,7 +175,9 @@
                             <constraint firstAttribute="trailing" secondItem="71G-sT-4zw" secondAttribute="trailing" id="w1y-03-EZU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="4tV-Gf-WtA"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="cloud.sun.bolt" catalog="system" id="4tV-Gf-WtA">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="cityNameLable" destination="W9x-MH-me7" id="1ym-rm-gOh"/>
                         <outlet property="dailyTableView" destination="gCe-ya-uq5" id="f3T-co-hHz"/>
@@ -244,7 +247,9 @@
                             <constraint firstItem="naL-hj-trd" firstAttribute="leading" secondItem="nDj-pv-Ock" secondAttribute="leading" constant="20" id="pcQ-bz-H2r"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="map.fill" catalog="system" id="Lk0-p8-8un"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="map" catalog="system" selectedImage="map" id="Lk0-p8-8un">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="borderViewForMap" destination="naL-hj-trd" id="OlW-Ce-AZa"/>
                         <outlet property="nameOfTappedPiont" destination="LFV-D0-2vV" id="mVx-h5-Zlw"/>
@@ -293,7 +298,9 @@
                             <constraint firstItem="6yi-08-h4Q" firstAttribute="bottom" secondItem="fDV-Jg-sFp" secondAttribute="bottom" id="wIg-V9-z3k"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="xdN-FE-kQx"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="book" catalog="system" id="xdN-FE-kQx">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="historyTableView" destination="fDV-Jg-sFp" id="rBj-cs-KbP"/>
                     </connections>
@@ -304,10 +311,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map.fill" catalog="system" width="128" height="110"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="cloud.sun.bolt" catalog="system" width="125" height="128"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
